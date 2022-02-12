@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta http-equiv="refresh" content="1"> -->
+
+    <!-- above meta tag can be used instead of setTimeout it will reload the page in every 1 sec mentioned in content -->
+
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        div {
+            color: azure;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: x-large;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+        h4 {
+            color: azure;
+        }
+    </style>
+    <title>digital clock</title>
+</head>
+
+<body>
+    <!-- <h4>24 Hours format</h4>
+    <div id=digi24>
+        <h1>24 Hours format</h1>
+    </div>
+    <br>
+    <br> -->
+    <!-- <h4>12 Hours format</h4> -->
+    <div id=digi12></div>
+    <script>
+        function showTime() //24 hrs format
+        {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+
+            // to make 2 digit
+            {
+                if (h < 10)
+                    h = "0" + h;
+                if (m < 10)
+                    s = "0" + s;
+                if (s < 10)
+                    s = "0" + s;
+
+            }
+            document.getElementById("digi24").innerHTML = h + " : " + m + " : " + s;
+            setTimeout(showTime, 1000);
+            // bcz of above statement above function is running in every 1sec = 1000 milisec or use meta tag
+        }
+
+
+        function hour12formart() //12 hrs format
+        {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var ss = "AM";
+
+            if (h == 0)
+                h = 12;
+            if (h > 12) {
+                h -= 12;
+                ss = "PM"
+            }
+
+            // to make 2 digit
+            {
+                if (h < 10)
+                    h = "0" + h;
+                if (m < 10)
+                    s = "0" + s;
+                if (s < 10)
+                    s = "0" + s;
+
+            }
+
+
+            document.getElementById("digi12").innerHTML = h + " : " + m + " : " + s + " " + ss;
+            setTimeout(hour12formart, 1000);
+            // bcz of above statement above function is running in every 1sec = 1000 milisec or use meta tag
+        }
+        // showTime();
+        hour12formart()
+    </script>
+</body>
+
+</html>
