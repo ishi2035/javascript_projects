@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: black;
+            align-items: center;
+        }
+        
+        div {
+            color: aliceblue;
+        }
+    </style>
+    <title>To Do list</title>
+</head>
+
+<body>
+    <div class="main ">
+        <h1 class="row">TO-DO LIST</h1>
+        <br><br>
+        <div class="row">
+            <form>
+                <div class="input_group">
+                    <input type="text" placeholder="TO-DO list" id="box" style="width: 30vw">
+                </div>
+                <br>
+                <div class="form_group">
+                    <input type="button" value="add" style="width: 30vw" onclick="add() ">
+                </div>
+            </form>
+        </div>
+        <div>
+            <ul id="list"></ul>
+        </div>
+    </div>
+
+
+    <script>
+        function add() {
+            let item = document.getElementById("box");
+            let list = document.getElementById("list");
+            if (item.value != "") {
+                let make_li = document.createElement("li");
+                make_li.appendChild(document.createTextNode(item.value));
+                list.appendChild(make_li);
+                item.value = "";
+
+
+                make_li.onclick = function() {
+                    this.parentNode.removeChild(this);
+                }
+            } else {
+                alert("please add item");
+            }
+        }
+    </script>
+</body>
+
+</html>
